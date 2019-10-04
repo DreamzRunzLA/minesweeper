@@ -1,13 +1,15 @@
 #Things to track: bombed? flagged? revealed?
 class Tile
 
-    attr_accessor :bomb_bool, :flag_bool, :reveal_bool
+    attr_accessor :bomb_bool, :flag_bool, :reveal_bool, :board, :row, :col
 
-    def initialize(board_object, bombs=13)
+    def initialize(board_object)
         @board = board_object
         @bomb_bool = false
         @flag_bool = false
         @reveal_bool = false
+        @row = nil
+        @col = nil
     end
 
     def inspect
@@ -21,7 +23,7 @@ class Tile
     end
 
     def reveal
-
+        @reveal_bool = true
     end
 
     def neighbors

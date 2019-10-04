@@ -3,7 +3,7 @@ require_relative 'tile'
 #Start out with a 9x9 grid
 class Board
 
-    attr_reader :grid, :size
+    attr_accessor :grid, :size
 
     def initialize(size=9)
         @size = size
@@ -20,7 +20,17 @@ class Board
 
             if self.[](new_row, new_col).bomb_bool == false
                 self.[](new_row, new_col).bomb_bool = true
+                puts "placed a bomb!"
                 number_bombs -= 1
+            end
+        end
+    end
+
+    def add_pos_to_tiles
+        self.grid.each_with_index do |row1, ind1|
+            row1.each_with_index do |col1, ind2|
+                self.[](ind1, ind2).row = ind1
+                self.[](ind1, ind2).col = ind2
             end
         end
     end
