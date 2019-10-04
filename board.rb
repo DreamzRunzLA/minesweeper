@@ -8,6 +8,8 @@ class Board
     def initialize(size=9)
         @size = size
         @grid = Array.new(size) { Array.new(size) {Tile.new(self)} }
+        place_bombs
+        add_pos_to_tiles
     end
 
     #13 bombs spread out over 81 squares randomly

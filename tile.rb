@@ -27,7 +27,30 @@ class Tile
     end
 
     def neighbors
+        neighbors_arr = []
 
+        if self.col == 0
+
+        elsif self.col == @board.size-1
+
+        elsif self.row == 0
+
+        elsif self.row == @board.size-1
+
+        else
+
+        end
+
+        
+
+        left_neighbor = @board.[](self.row, self.col - 1)
+        right_neighbor = @board.[](self.row, self.col + 1)
+        up_neighbor = @board.[](self.row - 1, self.col)
+        down_neighbor = @board.[](self.row + 1, self.col)
+        right_up_neighbor = @board.[](self.row - 1, self.col + 1)
+        right_down_neighbor = @board.[](self.row + 1, self.col + 1)
+        left_up_neighbor = @board.[](self.row - 1, self.col - 1)
+        left_down_neighbor = @board.[](self.row + 1, self.col - 1)
     end
 
     def neighbor_bomb_count
