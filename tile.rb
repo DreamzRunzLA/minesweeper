@@ -82,11 +82,19 @@ class Tile
             neighbors_arr << self.board.grid[self.row + 1][self.col - 1]
             neighbors_arr << self.board.grid[self.row + 1][self.col + 1]
         end
-        
+
         return neighbors_arr
     end
 
     def neighbor_bomb_count
+        count = 0
 
+        self.neighbors.each do |neighbor|
+            if neighbor.bomb_bool == true
+                count += 1
+            end
+        end
+
+        return count
     end
 end
