@@ -10,6 +10,7 @@ class Board
         @grid = Array.new(size) { Array.new(size) {Tile.new(self)} }
         place_bombs
         add_pos_to_tiles
+        add_bomb_count_to_tiles
     end
 
     #13 bombs spread out over 81 squares randomly
@@ -37,9 +38,17 @@ class Board
         end
     end
 
+    def add_bomb_count_to_tiles
+        self.grid.each_with_index do |row1, ind1|
+            row1.each_with_index do |col1, ind2|
+                self.[](ind1, ind2).bomb_count = self.[](ind1, ind2).neighbor_bomb_count
+            end
+        end
+    end
+
     def render
         system("clear")
-        puts "  #{(0...@grid.length).to_a.join('  ')}"
+        puts "   #{(0...@grid.length).to_a.join('  ')}"
         @grid.each_with_index do |row, i|
             puts "#{i} #{row}"
         end

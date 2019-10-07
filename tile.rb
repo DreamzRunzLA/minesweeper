@@ -1,7 +1,7 @@
 #Things to track: bombed? flagged? revealed?
 class Tile
 
-    attr_accessor :bomb_bool, :flag_bool, :reveal_bool, :board, :row, :col
+    attr_accessor :bomb_bool, :flag_bool, :reveal_bool, :board, :row, :col, :bomb_count
 
     def initialize(board_object)
         @board = board_object
@@ -10,13 +10,18 @@ class Tile
         @reveal_bool = false
         @row = nil
         @col = nil
+        @bomb_count = nil
     end
 
     def inspect
-        if @bomb_bool
-            return "B"
-        elsif @flag_bool
-            return "F"
+        if reveal_bool
+            if @bomb_bool
+                return "B"
+            elsif @flag_bool
+                return "F"
+            else
+                return @bomb_count.to_s
+            end
         else
             return "*"
         end
@@ -97,4 +102,5 @@ class Tile
 
         return count
     end
+
 end

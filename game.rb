@@ -11,9 +11,9 @@ class Game
     def get_pos
         pos = nil
         until pos && valid_pos?(pos)
-        puts "Please enter a position on the board (e.g., '3,4')"
-        print "> "
-        pos = parse_pos(gets.chomp)
+            puts "Please enter a position on the board (e.g., '3,4')"
+            print "> "
+            pos = parse_pos(gets.chomp)
         end
         pos
     end
@@ -99,3 +99,12 @@ class Game
     end
 
 end
+
+#User picks a tile
+#If it's a bomb, end the game
+#Reveal the tile
+#Also reveal all adjacents if the selected tile has no bombs nearby
+#For all the adjacents, reveal their adjacents if none of them have bombs nearby
+#Keep doing this until all adjacents to your outside most tiles have a bomb count > 0
+#Allow the user to flag a tile
+#Repeat 
